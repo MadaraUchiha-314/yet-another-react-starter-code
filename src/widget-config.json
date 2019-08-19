@@ -1,0 +1,9 @@
+{
+    "app-name": "yet-another-react-starter-code",
+    "widgets": {
+        "homepage": {
+            "path": "src/js/widgets/homepage/HomePage.js",
+            "route": "home"
+        }
+    }
+}
