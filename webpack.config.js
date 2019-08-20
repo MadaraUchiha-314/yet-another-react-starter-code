@@ -74,6 +74,9 @@ module.exports = {
             "./node_modules"
         ]
     },
+    devServer: {
+        port: 3001
+    },
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
