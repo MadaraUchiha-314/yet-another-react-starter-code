@@ -30,6 +30,16 @@ module.exports = {
                 use: "raw-loader"
             },
             {
+                enforce: 'pre',
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                options: {
+                    emitError: true,
+                    emitWarning: false
+                }
+            },
+            {
                 test: /\.js$/,
                 use: {
                     loader: "babel-loader",

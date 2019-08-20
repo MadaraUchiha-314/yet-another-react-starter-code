@@ -1,7 +1,7 @@
 /*
 * Contains the routing logic for the static pages which are generated.
 */
-
+/*global window, document*/
 import React from "react";
 import ReactDOM from "react-dom";
 
