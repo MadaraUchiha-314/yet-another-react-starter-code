@@ -5,14 +5,16 @@
 *   - Splitting tthe code based on entry points
 *   - Adding multiple outputs using the same config
 */
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const StyleLintPlugin = require("stylelint-webpack-plugin");
 
 const widgetConfig = require("./src/widget-config.json");
 const bu = require("./build-utils/build-utils.js");
 
 module.exports = {
-    mode: "development",
+    mode: "production",
     entry: ["router.js", ...bu.getEntryPoints(widgetConfig)],
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -21,8 +23,17 @@ module.exports = {
     module : {
         rules: [
             {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"],
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === "development",
+                        },
+                    },
+                    "css-loader",
+                    "sass-loader",
+                ],
                 exclude: /node_modules/
             },
             {
@@ -30,10 +41,10 @@ module.exports = {
                 use: "raw-loader"
             },
             {
-                enforce: 'pre',
+                enforce: "pre",
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'eslint-loader',
+                loader: "eslint-loader",
                 options: {
                     emitError: true,
                     emitWarning: false
@@ -79,8 +90,21 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './build-utils/template.html',
+            filename: "index.html",
+            template: "./build-utils/template.html",
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css",
+            ignoreOrder: false, // Enable to remove warnings about conflicting order
+        }),
+        new StyleLintPlugin({
+            configFile: ".stylelintrc.json",
+            context: "src",
+            files: "**/*.(sa|sc|c)ss",
+            failOnError: false,
+            quiet: false,
+            emitErrors: true // by default this is to true to check the CSS lint errors
         })
     ]
 };
