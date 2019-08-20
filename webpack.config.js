@@ -30,6 +30,16 @@ module.exports = {
                 use: "raw-loader"
             },
             {
+                enforce: 'pre',
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                options: {
+                    emitError: true,
+                    emitWarning: false
+                }
+            },
+            {
                 test: /\.js$/,
                 use: {
                     loader: "babel-loader",
@@ -63,6 +73,9 @@ module.exports = {
             path.resolve(__dirname, "./"),
             "./node_modules"
         ]
+    },
+    devServer: {
+        port: 3001
     },
     plugins: [
         new HtmlWebpackPlugin({
