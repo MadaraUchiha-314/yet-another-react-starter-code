@@ -15,10 +15,13 @@ const bu = require("./build-utils/build-utils.js");
 
 module.exports = {
     mode: "production",
-    entry: ["router.js", ...bu.getEntryPoints(widgetConfig)],
+    entry: ["router.jsx", ...bu.getEntryPoints(widgetConfig)],
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js"
+    },
+    resolve: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
     },
     module : {
         rules: [
@@ -42,7 +45,7 @@ module.exports = {
             },
             {
                 enforce: "pre",
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: "eslint-loader",
                 options: {
@@ -51,7 +54,16 @@ module.exports = {
                 }
             },
             {
-                test: /\.js$/,
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "ts-loader"
+                    }
+                ]
+            },
+            {
+                test: /\.jsx?$/,
                 use: {
                     loader: "babel-loader",
                     query: {
