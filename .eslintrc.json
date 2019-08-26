@@ -3,6 +3,19 @@
     "parser": "babel-eslint",
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
-    ]
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "settings": {
+        "import/extensions": [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx"
+        ]
+    },
+    "rules": {
+        "import/extensions": "off",
+        "import/no-unresolved": "off"
+    }
 }
