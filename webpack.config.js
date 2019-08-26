@@ -20,6 +20,9 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js"
     },
+    resolve: {
+        extensions: [".ts", ".tsx"]
+    },
     module : {
         rules: [
             {
@@ -42,13 +45,22 @@ module.exports = {
             },
             {
                 enforce: "pre",
-                test: /\.js$/,
+                test: /\.(js|ts)x?$/,
                 exclude: /node_modules/,
                 loader: "eslint-loader",
                 options: {
                     emitError: true,
                     emitWarning: false
                 }
+            },
+            {
+                test: /\.ts(x?)$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "ts-loader"
+                    }
+                ]
             },
             {
                 test: /\.js$/,
