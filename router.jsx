@@ -26,7 +26,9 @@ function renderWidgetBasedOnRoute() {
   }
 }
 
+const widgetConfig = require('src/widget-config.json');
+
 ReactDOM.render(
   renderWidgetBasedOnRoute(),
-  document.getElementById('root'),
+  document.getElementById(widgetConfig['app-name']),
 );
