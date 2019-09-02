@@ -103,10 +103,13 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
-            template: "./build-utils/template.html",
+            template: "./build-utils/template.ejs",
+            templateParameters: {
+              "appName": widgetConfig["app-name"]
+            },
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
+            filename: widgetConfig["app-name"] + ".css",
             chunkFilename: "[id].css",
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),

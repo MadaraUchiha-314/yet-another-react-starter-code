@@ -9,7 +9,7 @@ import 'src/css/homepage.scss';
 const HomePage = () => (
   <>
     <div className="homepage">
-      Hello World! ddasdasas
+      Hello World!
     </div>
     <Hello
       compiler="LOL"
