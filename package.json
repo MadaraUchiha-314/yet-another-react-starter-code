@@ -51,7 +51,7 @@
     "stylelint": "10.1.0",
     "stylelint-config-standard": "18.3.0",
     "stylelint-webpack-plugin": "0.10.5",
-    "ts-loader": "6.0.4",
+    "ts-loader": "6.1.0",
     "tslint": "5.20.0",
     "tslint-webpack-plugin": "2.1.0",
     "typescript": "3.6.3",
