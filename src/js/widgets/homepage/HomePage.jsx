@@ -1,5 +1,4 @@
 import React from 'react';
-import { Hello } from 'src/js/widgets/homepage/Hello.tsx';
 
 /*
 * CSS files go here.
@@ -11,10 +10,6 @@ const HomePage = () => (
     <div className="homepage">
       Hello World!
     </div>
-    <Hello
-      compiler="LOL"
-      framework="NOICE"
-    />
   </>
 );
 
