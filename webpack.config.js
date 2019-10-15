@@ -21,7 +21,7 @@ module.exports = {
     filename: "bundle.js"
   },
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"]
+    extensions: [".js", ".jsx"]
   },
   module : {
     rules: [
@@ -52,15 +52,6 @@ module.exports = {
           emitError: true,
           emitWarning: false
         }
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "ts-loader"
-          }
-        ]
       },
       {
         test: /\.jsx?$/,
