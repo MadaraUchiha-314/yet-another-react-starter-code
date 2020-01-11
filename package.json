@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Yet Another React Starter Code",
   "main": "index.js",
+  "moduleDirectories": [
+    "node_modules",
+    "."
+  ],
   "scripts": {
     "test": "jest",
     "build": "webpack --config webpack.config.js",
