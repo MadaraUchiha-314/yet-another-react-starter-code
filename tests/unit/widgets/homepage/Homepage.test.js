@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import HomePage from 'src/js/widgets/homepage/Homepage';
+import HomePage from 'src/js/widgets/homepage/Homepage.jsx';
 
 it('renders correctly', () => {
   const tree = renderer

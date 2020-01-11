@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 /*
 * Import your page level components here.
 */
-import HomePage from 'src/js/widgets/homepage/HomePage.jsx';
+import HomePage from 'src/js/widgets/homepage/Homepage.jsx';
 
 /*
 * Add your routes here.

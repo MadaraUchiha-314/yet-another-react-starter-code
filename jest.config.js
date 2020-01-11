@@ -1,5 +1,13 @@
 module.exports = {
-  "moduleDirectories": ["node_modules", "."],
+  "moduleDirectories": [
+    "node_modules", ".", "<rootDir>"
+  ],
+  "roots": [
+    "<rootDir>"
+  ],
+  "modulePaths": [
+    "<rootDir>"
+  ],
   "moduleFileExtensions": [
     "js",
     "jsx"
