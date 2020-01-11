@@ -24,3 +24,6 @@ jobs:
           curl -s https://codecov.io/bash | bash
         env:
           CI: true
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} #required
