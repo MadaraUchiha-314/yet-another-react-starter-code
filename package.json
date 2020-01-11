@@ -12,6 +12,12 @@
     "build": "webpack --config webpack.config.js",
     "start": "webpack-dev-server --mode development"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx eslint --ext .jsx --ext .js src/js/** --fix --no-error-on-unmatched-pattern && pretty-quick --staged",
+      "pre-push": "npx eslint --ext .jsx --ext .js src/js/** && npm run build && npm run test"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MadaraUchiha-314/yet-another-react-starter-code.git"
@@ -42,10 +48,13 @@
     "file-loader": "5.0.2",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
+    "husky": "^4.0.6",
     "jest": "24.9.0",
     "mini-css-extract-plugin": "0.9.0",
     "node-sass": "4.13.0",
     "postcss-loader": "3.0.0",
+    "prettier": "1.19.1",
+    "pretty-quick": "^2.0.1",
     "react-test-renderer": "16.12.0",
     "requirejs": "2.3.6",
     "sass-loader": "8.0.1",

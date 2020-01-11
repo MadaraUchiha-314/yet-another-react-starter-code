@@ -1,15 +1,13 @@
 import React from 'react';
 
 /*
-* CSS files go here.
-*/
+ * CSS files go here.
+ */
 import 'src/css/homepage.scss';
 
 const HomePage = () => (
   <>
-    <div className="homepage">
-      Hello World!
-    </div>
+    <div className="homepage">Hello World!</div>
   </>
 );
 
