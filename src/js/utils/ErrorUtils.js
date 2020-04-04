@@ -1,0 +1,15 @@
+export const errorCodes = {
+  UNKNOWN_ERROR: 'UNKNOWN_ERROR',
+  API_ERROR: 'API_ERROR',
+  REDUCER_LOGIC_ERROR: 'REDUCER_LOGIC_ERROR',
+};
+
+export const errorMessages = {
+  UNKNOWN_ERROR: 'SNAG_UNKNOWN_ERROR',
+  API_ERROR: 'SNAG_API_ERROR_MESSAGE',
+  REDUCER_LOGIC_ERROR: 'SNAG_UNKNOWN_ERROR',
+};
+
+export const httpErrorStatuses = {
+  ERROR_401: 401,
+};

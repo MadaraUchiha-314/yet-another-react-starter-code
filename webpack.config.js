@@ -1,29 +1,29 @@
 /*
-* This contains the configuration for our app.
-* We use this configuration to figure out our start points, logical structure and other optimizations possible.
-* These may (in the future) include :
-*   - Splitting tthe code based on entry points
-*   - Adding multiple outputs using the same config
-*/
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const StyleLintPlugin = require("stylelint-webpack-plugin");
+ * This contains the configuration for our app.
+ * We use this configuration to figure out our start points, logical structure and other optimizations possible.
+ * These may (in the future) include :
+ *   - Splitting tthe code based on entry points
+ *   - Adding multiple outputs using the same config
+ */
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
-const widgetConfig = require("./src/widget-config.json");
-const bu = require("./build-utils/build-utils.js");
+const widgetConfig = require('./src/widget-config.json');
+const bu = require('./build-utils/build-utils.js');
 
 module.exports = {
-  mode: "production",
-  entry: ["router.jsx", ...bu.getEntryPoints(widgetConfig)],
+  mode: 'production',
+  entry: ['router.jsx', ...bu.getEntryPoints(widgetConfig)],
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: ['.js', '.jsx'],
   },
-  module : {
+  module: {
     rules: [
       {
         test: /\.(sa|sc|c)ss$/,
@@ -31,86 +31,89 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: process.env.NODE_ENV === "development",
+              hmr: process.env.NODE_ENV === 'development',
             },
           },
-          "css-loader",
-          "sass-loader",
+          'css-loader',
+          'sass-loader',
         ],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.txt$/,
-        use: "raw-loader"
+        use: 'raw-loader',
       },
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader',
         options: {
           emitError: true,
-          emitWarning: false
-        }
+          emitWarning: false,
+        },
+        resolve: {
+          extensions: ['.js', '.jsx'],
+        },
       },
       {
         test: /\.jsx?$/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           query: {
-            presets: ["@babel/preset-env", "@babel/preset-react"]
-          }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
         },
-        exclude: /node_modules/
+        resolve: {
+          extensions: ['.js', '.jsx'],
+        },
+        exclude: /node_modules/,
       },
       {
         test: /\.(html)$/,
         use: {
-          loader: "html-loader",
+          loader: 'html-loader',
           options: {
-            attrs: [":data-src"]
-          }
-        }
+            attrs: [':data-src'],
+          },
+        },
       },
       {
         test: /\.(woff|woff2|eot|ttf)$/,
-        loader: "url-loader?limit=100000"
+        loader: 'url-loader?limit=100000',
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: "file-loader"
-      }
-    ]
+        loader: 'file-loader',
+      },
+    ],
   },
   resolve: {
-    modules: [
-      path.resolve(__dirname, "./"),
-      "./node_modules"
-    ]
+    modules: [path.resolve(__dirname, './'), './node_modules'],
   },
   devServer: {
-    port: 3001
+    port: 3001,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "./build-utils/template.ejs",
+      filename: 'index.html',
+      template: './build-utils/template.ejs',
       templateParameters: {
-        "appName": widgetConfig["app-name"]
+        appName: widgetConfig['app-name'],
       },
     }),
     new MiniCssExtractPlugin({
-      filename: widgetConfig["app-name"] + ".css",
-      chunkFilename: "[id].css",
+      filename: widgetConfig['app-name'] + '.css',
+      chunkFilename: '[id].css',
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
     new StyleLintPlugin({
-      configFile: ".stylelintrc.json",
-      context: "src",
-      files: "**/*.(sa|sc|c)ss",
+      configFile: '.stylelintrc.json',
+      context: 'src',
+      files: '**/*.(sa|sc|c)ss',
       failOnError: false,
       quiet: false,
-      emitErrors: true // by default this is to true to check the CSS lint errors
-    })
-  ]
+      emitErrors: true, // by default this is to true to check the CSS lint errors
+    }),
+  ],
 };
