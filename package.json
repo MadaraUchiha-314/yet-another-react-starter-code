@@ -16,7 +16,7 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "npx eslint --ext .jsx --ext .js src/js/** --fix --no-error-on-unmatched-pattern && pretty-quick --staged",
-      "pre-push": "npx eslint --ext .jsx --ext .js src/js/** && npm run build && npm run test"
+      "pre-push": "npm run build && npm run test"
     }
   },
   "repository": {

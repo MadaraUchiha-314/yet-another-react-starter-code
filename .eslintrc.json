@@ -8,6 +8,7 @@
   "rules": {
     "import/extensions": "off",
     "import/no-unresolved": "off",
-    "max-len": "off"
+    "max-len": "off",
+    "operator-linebreak": "off"
   }
 }
