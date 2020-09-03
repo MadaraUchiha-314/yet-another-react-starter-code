@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/MadaraUchiha-314/yet-another-react-starter-code#readme",
   "devDependencies": {
-    "@babel/core": "7.11.5",
+    "@babel/core": "7.11.6",
     "@babel/preset-env": "7.11.5",
     "@babel/preset-react": "7.10.4",
     "@commitlint/cli": "9.1.2",
